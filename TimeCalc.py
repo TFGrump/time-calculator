@@ -1,14 +1,15 @@
-# times is an array of times that are in a tuple of (day, hrs, mins)
+# 'times' is an array of times that are in a tuple of (days, hrs, mins)
 def add_time(times):
-    days = 0
-    hrs = 0
-    mins = 0
+    # Initializing the three count variables
+    days, hrs, mins = (0, 0, 0)
 
+    # Adds all the times together, ignoring the need to carry over extra time
     for time in times:
         mins = mins + time[2]
         hrs = hrs + time[1]
         days = days + time[0]
 
+    # Dealing with the need to carry over extra time so that mins is between 0 and 59 and hours is between 0 and 23
     hrs = hrs + mins // 60
     mins = mins % 60
 
@@ -22,7 +23,7 @@ def parse_tuple(time):
     return "Days: %d, Hours: %d, Minutes: %d" % (time[0], time[1], time[2])
 
 
-# Example use
+# Example uses
 hw_times = [(0, 8, 8), (0, 9, 12), (0, 6, 9), (0, 5, 5), (0, 5, 3), (0, 3, 30), (0, 8, 19), (0, 7, 54)]
 print("Total hw: " + parse_tuple(add_time(hw_times)))
 
