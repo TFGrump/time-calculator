@@ -5,13 +5,15 @@ def add_time(times):
     mins = 0
 
     for time in times:
-        total_mins = mins + time[2]
-        mins = total_mins % 60
+        mins = mins + time[2]
+        hrs = hrs + time[1]
+        days = days + time[0]
 
-        total_hrs = hrs + time[1] + total_mins/60
-        hrs = total_hrs % 24
+    hrs = hrs + mins // 60
+    mins = mins % 60
 
-        days = days + time[0] + total_hrs / 60
+    days = days + hrs // 24
+    hrs = hrs % 24
 
     return tuple((days, hrs, mins))
 
